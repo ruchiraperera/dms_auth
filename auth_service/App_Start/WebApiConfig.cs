@@ -15,10 +15,7 @@ namespace auth_service
             config.Filters.Add(new JwtAuthenticationAttribute());
             // Web API routes
             config.MapHttpAttributeRoutes();
-
-            // Web API routes
-            config.MapHttpAttributeRoutes();
-
+            
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
                 routeTemplate: "api/{controller}/{id}",

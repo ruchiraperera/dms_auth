@@ -114,3 +114,4 @@ E:\Ruchira\freelance\noname\DMS\restructure\auth_service\auth_service\auth_servi
 E:\Ruchira\freelance\noname\DMS\restructure\auth_service\auth_service\auth_service\obj\Debug\auth_service.csproj.CopyComplete
 E:\Ruchira\freelance\noname\DMS\restructure\auth_service\auth_service\auth_service\obj\Debug\auth_service.dll
 E:\Ruchira\freelance\noname\DMS\restructure\auth_service\auth_service\auth_service\obj\Debug\auth_service.pdb
+E:\Ruchira\freelance\noname\DMS\restructure\auth_service\auth_service\auth_service\obj\Debug\auth_service.csprojAssemblyReference.cache
