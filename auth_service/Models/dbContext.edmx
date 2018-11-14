@@ -1,0 +1,197 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="fileManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userId" Type="int" />
+          <Property Name="canEdit" Type="bit" />
+          <Property Name="canView" Type="bit" />
+          <Property Name="canDownload" Type="bit" />
+          <Property Name="canAdd" Type="bit" />
+          <Property Name="canDelete" Type="bit" />
+          <Property Name="createFolder" Type="bit" />
+          <Property Name="canShare" Type="bit" />
+          <Property Name="canUnShare" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_profile">
+          <Key>
+            <PropertyRef Name="profileId" />
+          </Key>
+          <Property Name="profileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="350" />
+          <Property Name="lastName" Type="varchar" MaxLength="350" />
+          <Property Name="email" Type="varchar" MaxLength="550" />
+          <Property Name="imageurl" Type="varchar" MaxLength="450" />
+          <Property Name="userId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_user">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="150" />
+          <Property Name="password" Type="varchar" MaxLength="250" />
+          <Property Name="userType" Type="int" />
+          <Property Name="active" Type="bit" />
+          <Property Name="adminGroupUser" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'fileManager.dbo.tbl_userType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_userType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityContainer Name="fileManagerModelStoreContainer">
+          <EntitySet Name="tbl_permission" EntityType="Self.tbl_permission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_profile" EntityType="Self.tbl_profile" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_userType" EntityType="Self.tbl_userType" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tbl_userType].[Id] AS [Id], 
+    [tbl_userType].[type] AS [type]
+    FROM [dbo].[tbl_userType] AS [tbl_userType]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="fileManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userId" Type="Int32" />
+          <Property Name="canEdit" Type="Boolean" />
+          <Property Name="canView" Type="Boolean" />
+          <Property Name="canDownload" Type="Boolean" />
+          <Property Name="canAdd" Type="Boolean" />
+          <Property Name="canDelete" Type="Boolean" />
+          <Property Name="createFolder" Type="Boolean" />
+          <Property Name="canShare" Type="Boolean" />
+          <Property Name="canUnShare" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tbl_profile">
+          <Key>
+            <PropertyRef Name="profileId" />
+          </Key>
+          <Property Name="profileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="lastName" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+          <Property Name="email" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+          <Property Name="imageurl" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+          <Property Name="userId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_user">
+          <Key>
+            <PropertyRef Name="userId" />
+          </Key>
+          <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="userType" Type="Int32" />
+          <Property Name="active" Type="Boolean" />
+          <Property Name="adminGroupUser" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tbl_userType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="fileManagerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_permission" EntityType="Self.tbl_permission" />
+          <EntitySet Name="tbl_profile" EntityType="Self.tbl_profile" />
+          <EntitySet Name="tbl_user" EntityType="Self.tbl_user" />
+          <EntitySet Name="tbl_userType" EntityType="Self.tbl_userType" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="fileManagerModelStoreContainer" CdmEntityContainer="fileManagerEntities">
+          <EntitySetMapping Name="tbl_permission">
+            <EntityTypeMapping TypeName="fileManagerModel.tbl_permission">
+              <MappingFragment StoreEntitySet="tbl_permission">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="canEdit" ColumnName="canEdit" />
+                <ScalarProperty Name="canView" ColumnName="canView" />
+                <ScalarProperty Name="canDownload" ColumnName="canDownload" />
+                <ScalarProperty Name="canAdd" ColumnName="canAdd" />
+                <ScalarProperty Name="canDelete" ColumnName="canDelete" />
+                <ScalarProperty Name="createFolder" ColumnName="createFolder" />
+                <ScalarProperty Name="canShare" ColumnName="canShare" />
+                <ScalarProperty Name="canUnShare" ColumnName="canUnShare" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_profile">
+            <EntityTypeMapping TypeName="fileManagerModel.tbl_profile">
+              <MappingFragment StoreEntitySet="tbl_profile">
+                <ScalarProperty Name="profileId" ColumnName="profileId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="imageurl" ColumnName="imageurl" />
+                <ScalarProperty Name="userId" ColumnName="userId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_user">
+            <EntityTypeMapping TypeName="fileManagerModel.tbl_user">
+              <MappingFragment StoreEntitySet="tbl_user">
+                <ScalarProperty Name="userId" ColumnName="userId" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="userType" ColumnName="userType" />
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="adminGroupUser" ColumnName="adminGroupUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_userType">
+            <EntityTypeMapping TypeName="fileManagerModel.tbl_userType">
+              <MappingFragment StoreEntitySet="tbl_userType">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

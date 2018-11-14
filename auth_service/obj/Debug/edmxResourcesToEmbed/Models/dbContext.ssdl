@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="fileManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tbl_permission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="int" />
+    <Property Name="canEdit" Type="bit" />
+    <Property Name="canView" Type="bit" />
+    <Property Name="canDownload" Type="bit" />
+    <Property Name="canAdd" Type="bit" />
+    <Property Name="canDelete" Type="bit" />
+    <Property Name="createFolder" Type="bit" />
+    <Property Name="canShare" Type="bit" />
+    <Property Name="canUnShare" Type="bit" />
+  </EntityType>
+  <EntityType Name="tbl_profile">
+    <Key>
+      <PropertyRef Name="profileId" />
+    </Key>
+    <Property Name="profileId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="firstName" Type="varchar" MaxLength="350" />
+    <Property Name="lastName" Type="varchar" MaxLength="350" />
+    <Property Name="email" Type="varchar" MaxLength="550" />
+    <Property Name="imageurl" Type="varchar" MaxLength="450" />
+    <Property Name="userId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_user">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="150" />
+    <Property Name="password" Type="varchar" MaxLength="250" />
+    <Property Name="userType" Type="int" />
+    <Property Name="active" Type="bit" />
+    <Property Name="adminGroupUser" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'fileManager.dbo.tbl_userType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="tbl_userType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="type" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityContainer Name="fileManagerModelStoreContainer">
+    <EntitySet Name="tbl_permission" EntityType="Self.tbl_permission" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_profile" EntityType="Self.tbl_profile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_user" EntityType="Self.tbl_user" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tbl_userType" EntityType="Self.tbl_userType" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [tbl_userType].[Id] AS [Id], 
+    [tbl_userType].[type] AS [type]
+    FROM [dbo].[tbl_userType] AS [tbl_userType]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

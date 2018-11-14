@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="fileManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tbl_permission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int32" />
+    <Property Name="canEdit" Type="Boolean" />
+    <Property Name="canView" Type="Boolean" />
+    <Property Name="canDownload" Type="Boolean" />
+    <Property Name="canAdd" Type="Boolean" />
+    <Property Name="canDelete" Type="Boolean" />
+    <Property Name="createFolder" Type="Boolean" />
+    <Property Name="canShare" Type="Boolean" />
+    <Property Name="canUnShare" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="tbl_profile">
+    <Key>
+      <PropertyRef Name="profileId" />
+    </Key>
+    <Property Name="profileId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="firstName" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="lastName" Type="String" MaxLength="350" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="550" FixedLength="false" Unicode="false" />
+    <Property Name="imageurl" Type="String" MaxLength="450" FixedLength="false" Unicode="false" />
+    <Property Name="userId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tbl_user">
+    <Key>
+      <PropertyRef Name="userId" />
+    </Key>
+    <Property Name="userId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="username" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="userType" Type="Int32" />
+    <Property Name="active" Type="Boolean" />
+    <Property Name="adminGroupUser" Type="Int32" />
+  </EntityType>
+  <EntityType Name="tbl_userType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="fileManagerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tbl_permission" EntityType="Self.tbl_permission" />
+    <EntitySet Name="tbl_profile" EntityType="Self.tbl_profile" />
+    <EntitySet Name="tbl_user" EntityType="Self.tbl_user" />
+    <EntitySet Name="tbl_userType" EntityType="Self.tbl_userType" />
+  </EntityContainer>
+</Schema>

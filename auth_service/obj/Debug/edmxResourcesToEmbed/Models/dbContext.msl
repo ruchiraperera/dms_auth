@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="fileManagerModelStoreContainer" CdmEntityContainer="fileManagerEntities">
+    <EntitySetMapping Name="tbl_permission">
+      <EntityTypeMapping TypeName="fileManagerModel.tbl_permission">
+        <MappingFragment StoreEntitySet="tbl_permission">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="canEdit" ColumnName="canEdit" />
+          <ScalarProperty Name="canView" ColumnName="canView" />
+          <ScalarProperty Name="canDownload" ColumnName="canDownload" />
+          <ScalarProperty Name="canAdd" ColumnName="canAdd" />
+          <ScalarProperty Name="canDelete" ColumnName="canDelete" />
+          <ScalarProperty Name="createFolder" ColumnName="createFolder" />
+          <ScalarProperty Name="canShare" ColumnName="canShare" />
+          <ScalarProperty Name="canUnShare" ColumnName="canUnShare" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_profile">
+      <EntityTypeMapping TypeName="fileManagerModel.tbl_profile">
+        <MappingFragment StoreEntitySet="tbl_profile">
+          <ScalarProperty Name="profileId" ColumnName="profileId" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="imageurl" ColumnName="imageurl" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_user">
+      <EntityTypeMapping TypeName="fileManagerModel.tbl_user">
+        <MappingFragment StoreEntitySet="tbl_user">
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="userType" ColumnName="userType" />
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="adminGroupUser" ColumnName="adminGroupUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tbl_userType">
+      <EntityTypeMapping TypeName="fileManagerModel.tbl_userType">
+        <MappingFragment StoreEntitySet="tbl_userType">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
